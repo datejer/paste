@@ -25,11 +25,11 @@ const Paste = () => {
 
 	return (
 		<div className={styles.container}>
-			<SEO />
+			<SEO title={router.query.id} />
 
 			<main className={styles.main}>
 				<h1 className={styles.title}>{router.query.id}</h1>
-				<p>{paste.content}</p>
+				<code className={styles.code}>{paste.content}</code>
 			</main>
 
 			<footer className={styles.footer}>

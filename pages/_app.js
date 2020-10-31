@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { ToastProvider } from "react-toast-notifications";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	return (
+		<ToastProvider>
+			<Component {...pageProps} />
+		</ToastProvider>
+	);
 }
 
-export default MyApp
+export default MyApp;
