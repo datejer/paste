@@ -15,7 +15,7 @@ const Paste = () => {
 				.get(`/api/paste?id=${router.query.id}`)
 				.then((response) => {
 					setPaste(response.data);
-					setLoading(false);
+					setTimeout(setLoading(false), 5000);
 				})
 				.catch((error) => {
 					router.push("/");
@@ -29,7 +29,18 @@ const Paste = () => {
 
 			<main className={styles.main}>
 				<h1 className={styles.title}>{router.query.id}</h1>
-				<code className={styles.code}>{paste.content}</code>
+				<code className={styles.code}>
+					{loading ? (
+						<div className="lds-ring">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					) : (
+						paste.content
+					)}
+				</code>
 			</main>
 
 			<footer className={styles.footer}>
