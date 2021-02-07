@@ -8,8 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "axios": "^0.21.0",
-    "mongodb": "^3.6.2",
+    "axios": "^0.21.1",
+    "mongodb": "^3.6.4",
     "next": "10.0.0",
     "next-connect": "^0.9.1",
     "react": "17.0.1",
