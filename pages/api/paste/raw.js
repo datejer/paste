@@ -2,6 +2,20 @@ import database from "../../../middlewares/database";
 import nextConnect from "next-connect";
 import { ObjectID } from "mongodb";
 
+let tagsToReplace = {
+	"&": "&amp;",
+	"<": "&lt;",
+	">": "&gt;",
+};
+
+const replaceTag = (tag) => {
+	return tagsToReplace[tag] || tag;
+};
+
+const escapeHTML = (str) => {
+	return str.replace(/[&<>]/g, replaceTag);
+};
+
 const handler = nextConnect();
 
 handler.use(database);
@@ -19,7 +33,13 @@ handler.get(async (req, res) => {
 					.status(404)
 					.json({ message: "Couldn't find a paste with this ID!" });
 
-			return res.status(200).send(paste.content);
+			return res
+				.status(200)
+				.send(
+					`<pre style="word-wrap: break-word; white-space: pre-wrap;">${escapeHTML(
+						paste.content
+					)}</pre>`
+				);
 		});
 });
 
