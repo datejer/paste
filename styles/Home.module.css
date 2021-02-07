@@ -40,12 +40,12 @@
 
 .code {
 	border-radius: 5px;
-	padding: 1em;
-	font-size: 1.1rem;
+	padding: 0.75em;
+	font-size: 1em;
 	font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 		Bitstream Vera Sans Mono, Courier New, monospace;
-	box-shadow: inset 0 0 10px #00000033;
-	border: none;
+	border: 1px solid #00000022;
+	box-shadow: 0 0 15px #00000022;
 	width: 800px;
 	max-width: 90vw;
 }
