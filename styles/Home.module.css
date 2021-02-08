@@ -36,6 +36,7 @@
 	padding-left: 1em;
 	font-size: 12px;
 	line-height: 24px;
+	white-space: pre-wrap;
 }
 
 .line::marker {
@@ -68,6 +69,13 @@
 
 .toolbarButton:hover {
 	cursor: pointer;
+}
+
+.new {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em 0;
 }
 
 .button {

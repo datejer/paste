@@ -43,6 +43,14 @@ const Paste = () => {
 		copyTextToClipboard(window.location.origin + window.location.pathname);
 	};
 
+	const copyText = () => {
+		addToast("Copied the paste contents to clipboard!", {
+			appearance: "success",
+			autoDismiss: true,
+		});
+		copyTextToClipboard(paste.content);
+	};
+
 	return (
 		<Layout>
 			<SEO title={router.query.id} />
@@ -52,27 +60,37 @@ const Paste = () => {
 			{loading ? (
 				<div className={styles.dotflashing}></div>
 			) : (
-				<div className={styles.paste}>
-					<div className={styles.toolbar}>
-						<span>{new Date(paste.date).toLocaleString()}</span>
-						<span>
-							<a className={styles.toolbarButton} onClick={copyURL}>
-								link
-							</a>
-							<Link href={`/raw/${router.query.id}`}>
-								<a className={styles.toolbarButton}>raw</a>
-							</Link>
-						</span>
+				<div>
+					<div className={styles.paste}>
+						<div className={styles.toolbar}>
+							<span>{new Date(paste.date).toLocaleString()}</span>
+							<span>
+								<a className={styles.toolbarButton} onClick={copyURL}>
+									link
+								</a>
+								<a className={styles.toolbarButton} onClick={copyText}>
+									copy
+								</a>
+								<Link href={`/raw/${router.query.id}`}>
+									<a className={styles.toolbarButton}>raw</a>
+								</Link>
+							</span>
+						</div>
+						<ol className={styles.lines}>
+							{paste.content.split(/\n/).map((item, key) => {
+								return (
+									<li className={styles.line} key={key}>
+										{item}
+									</li>
+								);
+							})}
+						</ol>
 					</div>
-					<ol className={styles.lines}>
-						{paste.content.split(/\n/).map((item, key) => {
-							return (
-								<li className={styles.line} key={key}>
-									{item}
-								</li>
-							);
-						})}
-					</ol>
+					<div className={styles.new}>
+						<Link href="/">
+							<a>Make your own paste.</a>
+						</Link>
+					</div>
 				</div>
 			)}
 		</Layout>
