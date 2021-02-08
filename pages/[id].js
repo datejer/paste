@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useToasts } from "react-toast-notifications";
@@ -34,6 +35,14 @@ const Paste = () => {
 		}
 	}, [router.query.id]);
 
+	const copyURL = () => {
+		addToast("Copied link to clipboard!", {
+			appearance: "success",
+			autoDismiss: true,
+		});
+		copyTextToClipboard(window.location.origin + window.location.pathname);
+	};
+
 	return (
 		<Layout>
 			<SEO title={router.query.id} />
@@ -43,16 +52,28 @@ const Paste = () => {
 			{loading ? (
 				<div className={styles.dotflashing}></div>
 			) : (
-				<code className={styles.code}>
-					{paste.content.split(/\n/).map((item, key) => {
-						return (
-							<span key={key}>
-								{item}
-								<br />
-							</span>
-						);
-					})}
-				</code>
+				<div className={styles.paste}>
+					<div className={styles.toolbar}>
+						<span>{new Date(paste.date).toLocaleString()}</span>
+						<span>
+							<a className={styles.toolbarButton} onClick={copyURL}>
+								link
+							</a>
+							<Link href={`/raw/${router.query.id}`}>
+								<a className={styles.toolbarButton}>raw</a>
+							</Link>
+						</span>
+					</div>
+					<ol className={styles.lines}>
+						{paste.content.split(/\n/).map((item, key) => {
+							return (
+								<li className={styles.line} key={key}>
+									{item}
+								</li>
+							);
+						})}
+					</ol>
+				</div>
 			)}
 		</Layout>
 	);

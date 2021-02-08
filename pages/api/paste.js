@@ -23,6 +23,7 @@ handler.get(async (req, res) => {
 				message: "Paste found!",
 				id: paste._id,
 				content: paste.content,
+				date: ObjectID(req.query.id).getTimestamp(),
 			});
 		});
 });
