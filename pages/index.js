@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import router from "next/router";
 import { useToasts } from "react-toast-notifications";
-import SEO from "../components/seo";
+import Layout from "../components/Layout/Layout";
+import SEO from "../components/SEO";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -48,38 +49,31 @@ export default function Home() {
 	};
 
 	return (
-		<div className={styles.container}>
+		<Layout>
 			<SEO />
 
-			<main className={styles.main}>
-				<h1 className={styles.title}>paste.ejer.gq</h1>
-				<textarea
-					placeholder="Hello World!"
-					className={styles.code}
-					style={{ height: "50vh" }}
-					onChange={handleContent}
-					ref={textarea}
-				/>
-				{pasting ? (
-					<button
-						className={styles.button}
-						onClick={submit}
-						style={{ padding: "1em 1.5em" }}
-					>
-						<div className={styles.dotflashing}></div>
-					</button>
-				) : (
-					<button className={styles.button} onClick={submit}>
-						Paste
-					</button>
-				)}
-			</main>
+			<h1 className={styles.title}>paste.ejer.gq</h1>
+			<textarea
+				placeholder="Hello World!"
+				className={styles.code}
+				style={{ height: "50vh" }}
+				onChange={handleContent}
+				ref={textarea}
+			/>
 
-			<footer className={styles.footer}>
-				<a href="https://ejer.ga/" target="_blank" rel="noopener noreferrer">
-					Made by <span className={styles.name}>ejer</span>
-				</a>
-			</footer>
-		</div>
+			{pasting ? (
+				<button
+					className={styles.button}
+					onClick={submit}
+					style={{ padding: "1em 1.5em" }}
+				>
+					<div className={styles.dotflashing}></div>
+				</button>
+			) : (
+				<button className={styles.button} onClick={submit}>
+					Paste
+				</button>
+			)}
+		</Layout>
 	);
 }

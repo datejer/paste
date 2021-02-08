@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 import copyTextToClipboard from "../utils/copy";
-import SEO from "../components/seo";
+import Layout from "../components/Layout/Layout";
+import SEO from "../components/SEO";
 import styles from "../styles/Home.module.css";
 
 const Paste = () => {
@@ -34,34 +35,26 @@ const Paste = () => {
 	}, [router.query.id]);
 
 	return (
-		<div className={styles.container}>
+		<Layout>
 			<SEO title={router.query.id} />
 
-			<main className={styles.main}>
-				<h1 className={styles.title}>{router.query.id}</h1>
+			<h1 className={styles.title}>{router.query.id}</h1>
 
-				{loading ? (
-					<div className={styles.dotflashing}></div>
-				) : (
-					<code className={styles.code}>
-						{paste.content.split(/\n/).map((item, key) => {
-							return (
-								<span key={key}>
-									{item}
-									<br />
-								</span>
-							);
-						})}
-					</code>
-				)}
-			</main>
-
-			<footer className={styles.footer}>
-				<a href="https://ejer.ga/" target="_blank" rel="noopener noreferrer">
-					Made by <span className={styles.name}>ejer</span>
-				</a>
-			</footer>
-		</div>
+			{loading ? (
+				<div className={styles.dotflashing}></div>
+			) : (
+				<code className={styles.code}>
+					{paste.content.split(/\n/).map((item, key) => {
+						return (
+							<span key={key}>
+								{item}
+								<br />
+							</span>
+						);
+					})}
+				</code>
+			)}
+		</Layout>
 	);
 };
 
