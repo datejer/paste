@@ -50,7 +50,7 @@ export default function Home() {
 
 	return (
 		<Layout>
-			<SEO />
+			<SEO description="Create your own paste today!" />
 
 			<h1 className={styles.title}>paste.ejer.gq</h1>
 			<textarea

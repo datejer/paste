@@ -53,7 +53,10 @@ const Paste = () => {
 
 	return (
 		<Layout>
-			<SEO title={router.query.id} />
+			<SEO
+				title={router.query.id}
+				description={`View paste with ID ${router.query.id}`}
+			/>
 
 			<h1 className={styles.title}>{router.query.id}</h1>
 
