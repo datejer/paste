@@ -1,16 +1,37 @@
+:root {
+	--background: #fff;
+	--foreground: #000;
+	--btn-shadow: #00000033;
+	--btn-glow: #00000077;
+	--border: #00000033;
+	--marker: #00000055;
+	--line-highlight: #00000011;
+}
+
+[data-theme='dark'] {
+	--background: #111;
+	--foreground: #fff;
+	--btn-shadow: #ffffff88;
+	--btn-glow: #ffffffdd;
+	--border: #ffffff33;
+	--marker: #ffffff55;
+	--line-highlight: #ffffff11;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	background-color: var(--background);
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }

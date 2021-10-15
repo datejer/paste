@@ -25,7 +25,7 @@ handler.get(async (req, res) => {
 	if (!req.query.id || req.query.id.length <= 0)
 		return res.status(404).json({ message: 'Please provide an ID!' });
 
-	if (shortid.isValid(req.query.id)) {
+	if (req.query.id.length <= 14) {
 		req.db
 			.collection('pastes')
 			.findOne({

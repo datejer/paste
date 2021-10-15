@@ -30,8 +30,7 @@ const Paste = () => {
 					setLoading(false);
 				})
 				.catch(error => {
-					// router.push("/");
-					console.log(error);
+					router.push('/');
 				});
 		}
 	}, [router.query.id]);

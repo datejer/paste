@@ -1,11 +1,14 @@
-import "../styles/globals.css";
-import { ToastProvider } from "react-toast-notifications";
+import '../styles/globals.css';
+import { ToastProvider } from 'react-toast-notifications';
+import { ThemeProvider } from 'next-themes';
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ToastProvider>
-			<Component {...pageProps} />
-		</ToastProvider>
+		<ThemeProvider defaultTheme="dark">
+			<ToastProvider>
+				<Component {...pageProps} />
+			</ToastProvider>
+		</ThemeProvider>
 	);
 }
 
