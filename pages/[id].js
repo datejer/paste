@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useToasts } from "react-toast-notifications";
-import copyTextToClipboard from "../utils/copy";
-import Layout from "../components/Layout/Layout";
-import SEO from "../components/SEO";
-import styles from "../styles/Home.module.css";
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useToasts } from 'react-toast-notifications';
+import copyTextToClipboard from '../utils/copy';
+import Layout from '../components/Layout/Layout';
+import SEO from '../components/SEO';
+import styles from '../styles/Home.module.css';
 
 const Paste = () => {
 	const router = useRouter();
@@ -15,9 +15,9 @@ const Paste = () => {
 	const { addToast } = useToasts();
 
 	useEffect(() => {
-		if (router.query.copy === "1") {
-			addToast("Copied link to clipboard!", {
-				appearance: "success",
+		if (router.query.copy === '1') {
+			addToast('Copied link to clipboard!', {
+				appearance: 'success',
 				autoDismiss: true,
 			});
 			copyTextToClipboard(window.location.origin + window.location.pathname);
@@ -25,27 +25,28 @@ const Paste = () => {
 		if (router.query.id) {
 			axios
 				.get(`/api/paste?id=${router.query.id}`)
-				.then((response) => {
+				.then(response => {
 					setPaste(response.data);
 					setLoading(false);
 				})
-				.catch((error) => {
-					router.push("/");
+				.catch(error => {
+					// router.push("/");
+					console.log(error);
 				});
 		}
 	}, [router.query.id]);
 
 	const copyURL = () => {
-		addToast("Copied link to clipboard!", {
-			appearance: "success",
+		addToast('Copied link to clipboard!', {
+			appearance: 'success',
 			autoDismiss: true,
 		});
 		copyTextToClipboard(window.location.origin + window.location.pathname);
 	};
 
 	const copyText = () => {
-		addToast("Copied the paste contents to clipboard!", {
-			appearance: "success",
+		addToast('Copied the paste contents to clipboard!', {
+			appearance: 'success',
 			autoDismiss: true,
 		});
 		copyTextToClipboard(paste.content);
